@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public NoOpPasswordEncoder passwordEncoder() {
 		return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
 	}
-	
+
 	// Cree l'authentification a partir des informations (User -> Role
 	// (Authorities)) +
 	// utilise l 'algorithme d'encryptage
@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
-	
+
 	// Dans la methode configure, on definit l’acces a notre application
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -47,10 +47,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		// d'authentifier l'utilisateur lors de la requête HTTP.
 //		http.httpBasic();
 //		http.csrf().disable();
-		
-		http.authorizeRequests()
-        .anyRequest().authenticated()
-        .and()
-        .httpBasic();
+
+//		http.authorizeRequests()
+//        .anyRequest().authenticated()
+//        .and()
+//        .httpBasic();
+		http.authorizeRequests().anyRequest().permitAll().and().httpBasic();
 	}
 }

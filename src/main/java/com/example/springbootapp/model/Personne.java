@@ -18,10 +18,12 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 public class Personne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@NonNull
 	private Long id;
 	@NonNull
 	private String nom;
